@@ -1,11 +1,11 @@
 package com.grupo2.sistemamonitoramento.dto;
 
-public class TarefaDTOResponse {
+public class DemandaDTORequest {
 
     private String nome;
     private String status;
 
-    public TarefaDTOResponse(String nome, String status) {
+    public DemandaDTORequest(String nome, String status) {
         this.nome = nome;
         this.status = status;
     }

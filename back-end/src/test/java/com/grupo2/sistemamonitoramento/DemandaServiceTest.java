@@ -1,8 +1,8 @@
 package com.grupo2.sistemamonitoramento;
 
-import com.grupo2.sistemamonitoramento.model.Tarefa;
-import com.grupo2.sistemamonitoramento.repository.TarefaRepository;
-import com.grupo2.sistemamonitoramento.service.TarefaService;
+import com.grupo2.sistemamonitoramento.model.Demanda;
+import com.grupo2.sistemamonitoramento.repository.DemandaRepository;
+import com.grupo2.sistemamonitoramento.service.DemandaService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,29 +17,29 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class TarefaServiceTest {
+public class DemandaServiceTest {
 
     @Mock
-    private TarefaRepository tarefaRepository; // Simula o BD
+    private DemandaRepository demandaRepository; // Simula o BD
 
     @InjectMocks
-    private TarefaService tarefaService; // Injeta o Mock no service
+    private DemandaService demandaService; // Injeta o Mock no service
 
     @Test
     @DisplayName("Deve retornar o ID informado")
-    void buscarPorIdComSucesso(){
+    void buscarPorIdComSucesso() {
         // Cenário
         Long id = 1L;
-        Tarefa tarefa = new Tarefa("Estudar JUnit", "Em andamento");
-        when(tarefaRepository.findById(id)).thenReturn(Optional.of(tarefa));
+        Demanda demanda = new Demanda("Estudar JUnit", "Em andamento");
+        when(demandaRepository.findById(id)).thenReturn(Optional.of(demanda));
 
         // Ação
-        Optional<Tarefa> resultado = tarefaService.lerTarefa(id);
+        Optional<Demanda> resultado = demandaService.lerDemanda(id);
 
         // Verificação
         assertNotNull(resultado);
         assertEquals("Estudar JUnit", resultado.get().getNome());
-        verify(tarefaRepository, times(1)).findById(id); // Garante que o banco foi consultado 1 vez
+        verify(demandaRepository, times(1)).findById(id); // Garante que o banco foi consultado 1 vez
     }
 
     @Test
@@ -47,9 +47,9 @@ public class TarefaServiceTest {
     void buscarPorIdFalha() {
         // Cenário
         Long id = 2L;
-        when(tarefaRepository.findById(id)).thenReturn(Optional.empty());
+        when(demandaRepository.findById(id)).thenReturn(Optional.empty());
 
         // Ação e Verificação
-        assertThrows(NoSuchElementException.class, () -> tarefaService.lerTarefa(id));
+        assertThrows(NoSuchElementException.class, () -> demandaService.lerDemanda(id));
     }
 }

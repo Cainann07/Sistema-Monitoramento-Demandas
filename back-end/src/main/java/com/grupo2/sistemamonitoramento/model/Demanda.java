@@ -1,13 +1,13 @@
 package com.grupo2.sistemamonitoramento.model;
 
-import com.grupo2.sistemamonitoramento.dto.TarefaDTORequest;
+import com.grupo2.sistemamonitoramento.dto.DemandaDTORequest;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Tarefa {
+public class Demanda {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,17 +15,17 @@ public class Tarefa {
     private String nome;
     private String status;
 
-    public Tarefa() {
+    public Demanda() {
     }
 
-    public Tarefa(String nome, String status) {
+    public Demanda(String nome, String status) {
         this.nome = nome;
         this.status = status;
     }
 
-    public Tarefa(TarefaDTORequest tarefaDTORequest) {
-        this.nome = tarefaDTORequest.getNome();
-        this.status = tarefaDTORequest.getStatus();
+    public Demanda(DemandaDTORequest demandaDTORequest) {
+        this.nome = demandaDTORequest.getNome();
+        this.status = demandaDTORequest.getStatus();
     }
 
     public String getNome() {

@@ -1,0 +1,75 @@
+$primary-color: #2c3e50;
+$accent-color: #3498db;
+$bg-color: #f4f7f6;
+$success-color: #27ae60;
+
+:host { // Propriedade para exibir o tema gradiente no background da página.
+    display: block;
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, rgba(86, 161, 198, 0.46) 0%, #f4f7f6 100%);
+    background-attachment: fixed;
+}
+
+.container {
+
+    padding: 20px;
+    background: transparent;
+    min-height: 100vh;
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+
+        h1 {
+            color: $primary-color;
+        }
+
+    }
+
+    .registros {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+
+            th,
+            td {
+                padding: 15px;
+                text-align: left;
+                border-bottom: 1px solid #eee;
+            }
+
+            th {
+                background-color: #f8f9fa;
+                color: $primary-color;
+            }
+
+            .status {
+                padding: 5px 10px;
+                border-radius: 20px;
+                font-size: 12px;
+                font-weight: bold;
+
+                &.em-andamento {
+                    background-color: lighten($accent-color, 35%);
+                    color: $accent-color;
+                }
+            }
+
+            .btn-excluir {
+                background: none;
+                border: none;
+                cursor: pointer;
+                font-size: 18px;
+                margin-right: 5px;
+            }
+        }
+    }
+}

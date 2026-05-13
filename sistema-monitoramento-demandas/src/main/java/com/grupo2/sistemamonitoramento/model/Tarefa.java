@@ -15,6 +15,9 @@ public class Tarefa {
     private String nome;
     private String status;
 
+    public Tarefa() {
+    }
+
     public Tarefa(String nome, String status) {
         this.nome = nome;
         this.status = status;

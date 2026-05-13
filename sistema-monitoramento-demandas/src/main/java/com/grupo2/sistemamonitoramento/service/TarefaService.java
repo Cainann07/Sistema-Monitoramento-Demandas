@@ -39,6 +39,7 @@ public class TarefaService {
 
     public Optional<Tarefa> excluirTarefa(Long id){
         Optional<Tarefa> tarefa = Optional.of(tarefaRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Essa tarefa não existe.")));
+        tarefaRepository.deleteById(id);
         return tarefa;
     }
 }

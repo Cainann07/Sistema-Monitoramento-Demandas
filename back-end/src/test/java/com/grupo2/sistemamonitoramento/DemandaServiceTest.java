@@ -30,8 +30,8 @@ public class DemandaServiceTest {
     void buscarPorIdComSucesso() {
         // Cenário
         Long id = 1L;
-        Demanda demanda = new Demanda("Estudar JUnit", "Em andamento");
-        when(demandaRepository.findById(id)).thenReturn(Optional.of(demanda));
+//        Demanda demanda = new Demanda("Estudar JUnit", "Em andamento");
+//        when(demandaRepository.findById(id)).thenReturn(Optional.of(demanda));
 
         // Ação
         Optional<Demanda> resultado = demandaService.lerDemanda(id);

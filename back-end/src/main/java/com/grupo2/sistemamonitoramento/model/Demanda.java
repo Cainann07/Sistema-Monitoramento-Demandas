@@ -18,7 +18,8 @@ public class Demanda {
     public Demanda() {
     }
 
-    public Demanda(String nome, String status) {
+    public Demanda(Long id, String nome, String status) {
+        this.id = id;
         this.nome = nome;
         this.status = status;
     }
@@ -26,6 +27,10 @@ public class Demanda {
     public Demanda(DemandaDTORequest demandaDTORequest) {
         this.nome = demandaDTORequest.getNome();
         this.status = demandaDTORequest.getStatus();
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getNome() {

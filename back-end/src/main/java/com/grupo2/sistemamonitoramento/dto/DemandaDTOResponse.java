@@ -2,12 +2,22 @@ package com.grupo2.sistemamonitoramento.dto;
 
 public class DemandaDTOResponse {
 
+    private Long id;
     private String nome;
     private String status;
 
-    public DemandaDTOResponse(String nome, String status) {
+    public DemandaDTOResponse(Long id, String nome, String status) {
+        this.id = id;
         this.nome = nome;
         this.status = status;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNome() {

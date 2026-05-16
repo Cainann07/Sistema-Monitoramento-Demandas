@@ -1,11 +1,13 @@
 package com.grupo2.sistemamonitoramento.dto;
 
+import com.grupo2.sistemamonitoramento.model.StatusDemanda;
+
 public class DemandaDTORequest {
 
     private String nome;
-    private String status;
+    private StatusDemanda status;
 
-    public DemandaDTORequest(String nome, String status) {
+    public DemandaDTORequest(String nome, StatusDemanda status) {
         this.nome = nome;
         this.status = status;
     }
@@ -18,11 +20,11 @@ public class DemandaDTORequest {
         this.nome = nome;
     }
 
-    public String getStatus() {
+    public StatusDemanda getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(StatusDemanda status) {
         this.status = status;
     }
 }

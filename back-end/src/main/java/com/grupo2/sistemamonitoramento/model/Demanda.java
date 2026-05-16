@@ -1,10 +1,7 @@
 package com.grupo2.sistemamonitoramento.model;
 
 import com.grupo2.sistemamonitoramento.dto.DemandaDTORequest;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Demanda {
@@ -13,12 +10,13 @@ public class Demanda {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nome;
-    private String status;
+    @Enumerated(EnumType.STRING) // Salva como STRING no MySQL para ficar legível
+    private StatusDemanda status;
 
     public Demanda() {
     }
 
-    public Demanda(Long id, String nome, String status) {
+    public Demanda(Long id, String nome, StatusDemanda status) {
         this.id = id;
         this.nome = nome;
         this.status = status;
@@ -41,11 +39,11 @@ public class Demanda {
         this.nome = nome;
     }
 
-    public String getStatus() {
+    public StatusDemanda getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(StatusDemanda status) {
         this.status = status;
     }
 

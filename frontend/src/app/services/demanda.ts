@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Demanda } from '../model/demanda.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +12,20 @@ export class DemandaService {
 
   constructor(private http: HttpClient) { }
 
-  listar(): Observable<any[]> {
-    return this.http.get<any[]>(this.urlAPI);
+  listar(): Observable<Demanda[]> {
+    return this.http.get<Demanda[]>(this.urlAPI);
   }
 
-  inserir(demanda: any): Observable<any> {
-    return this.http.post<any>(this.urlAPI, demanda);
+  inserir(demanda: Demanda): Observable<Demanda> {
+    return this.http.post<Demanda>(this.urlAPI, demanda);
+  }
+
+  atualizar(demanda: Demanda): Observable<Demanda> {
+    return this.http.put<Demanda>(`${this.urlAPI}/${demanda.id}`, demanda);
+  }
+
+  excluir(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.urlAPI}/${id}`);
   }
 
 }

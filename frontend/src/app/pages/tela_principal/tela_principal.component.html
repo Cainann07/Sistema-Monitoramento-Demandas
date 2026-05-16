@@ -1,19 +1,38 @@
 <div class="container">
     <header>
         <h1>Monitoramento de Demandas</h1>
-        <p-button label="Adicionar Demanda +" (onClick)="abrirModal()" />
+        <p-button label="Adicionar Demanda +" (onClick)="abrirModalInsercao()" />
     </header>
 
-    <!-- O Dialog deve ficar fora da section de registros para não quebrar o layout -->
-    <p-dialog header="Nova Demanda" [(visible)]="exibirModal" [modal]="true"
-        [style]="{ width: '25rem' , height: '15rem'}">
-        <div class="flex-column mb-2">
+    <p-dialog header="Nova Demanda" [(visible)]="exibirModal" [style]="{ width: '25rem'}">
+        <div class="campo-grupo">
             <label for="nome">Nome da Demanda</label>
             <input pInputText id="nome" [(ngModel)]="novaDemanda.nome" />
         </div>
         <div class="flex justify-content-end gap-2">
             <p-button label="Cancelar" severity="secondary" (onClick)="exibirModal = false" />
             <p-button label="Salvar" (onClick)="salvarDemanda()" />
+        </div>
+    </p-dialog>
+
+    <p-dialog header="Editar Demanda" [(visible)]="exibirModalEdicao" [modal]="true" [style]="{ width: '25rem' }">
+
+        <div class="campo-grupo">
+            <label for="nomeEditar">Nome da Demanda</label>
+            <input pInputText id="nomeEditar" [(ngModel)]="demandaEditada.nome" autocomplete="off" />
+        </div>
+
+        <div class="campo-status">
+            <label for="statusEditar">Status</label>
+            <div class="card flex justify-center">
+                <p-select [options]="opcoesStatus" [(ngModel)]="demandaEditada.status" placeholder="Selecione o Status"
+                    class="w-full md:w-56" />
+            </div>
+        </div>
+
+        <div class="acoes-modal">
+            <p-button label="Cancelar" severity="secondary" (onClick)="exibirModalEdicao = false" />
+            <p-button label="Salvar Alterações" (onClick)="editarDemanda()" />
         </div>
     </p-dialog>
 
@@ -24,11 +43,11 @@
                     <th>ID</th>
                     <th>Nome</th>
                     <th>Status</th>
-                    <th>Ações</th>
+                    <th>Editar</th>
+                    <th>Excluir</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- O pipe async espera os dados chegarem do Java -->
                 @if (demandas$ | async; as lista) {
 
                 @for (d of lista; track d.id) {
@@ -36,7 +55,10 @@
                     <td>{{ d.id }}</td>
                     <td>{{ d.nome }}</td>
                     <td><span class="status">{{ d.status }}</span></td>
-                    <td><button class="btn-excluir">🗑️</button></td>
+                    <td><p-button icon="pi pi-pencil" severity="warn" (onClick)="prepararEdicao(d)" [text]="true" />
+                    </td>
+                    <td><p-button icon="pi pi-trash" (onClick)="excluirDemanda(d.id)" severity="danger" [text]="true" />
+                    </td>
                 </tr>
                 } @empty {
                 <tr>
@@ -47,7 +69,6 @@
                 }
 
                 } @else {
-                <!-- Enquanto a requisição não volta, mostra um carregando -->
                 <tr>
                     <td colspan="4" style="text-align: center; padding: 20px;">
                         Carregando demandas...

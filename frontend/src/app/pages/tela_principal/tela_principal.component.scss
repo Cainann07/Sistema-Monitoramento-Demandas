@@ -3,13 +3,50 @@ $accent-color: #3498db;
 $bg-color: #f4f7f6;
 $success-color: #27ae60;
 
-:host { // Propriedade para exibir o tema gradiente no background da página.
+:host {
     display: block;
     width: 100%;
     min-height: 100vh;
     background: linear-gradient(135deg, rgba(86, 161, 198, 0.46) 0%, #f4f7f6 100%);
     background-attachment: fixed;
 }
+
+.campo-status{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 25px;
+    height: 115px;
+
+    label {
+        font-weight: 600;
+        color: #2c3e50;
+    }
+}
+
+.campo-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 25px;
+
+    label {
+        font-weight: 600;
+        color: #2c3e50;
+    }
+
+    input {
+        width: 100%;
+    }
+}
+
+.acoes-modal {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+}
+
 
 .container {
 
@@ -42,7 +79,7 @@ $success-color: #27ae60;
             th,
             td {
                 padding: 15px;
-                text-align: left;
+                text-align: center;
                 border-bottom: 1px solid #eee;
             }
 

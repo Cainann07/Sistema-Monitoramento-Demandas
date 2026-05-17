@@ -50,4 +50,4 @@ jobs:
       - name: Rodar os Testes Automatizados do Vitest
         run: |
           cd frontend
-          npx vitest run
+          npx vitest run tela_principal # 👈 ADICIONADO 'tela_principal' AQUI

@@ -45,7 +45,7 @@ jobs:
       - name: Instalar as Dependências do Front-end
         run: |
           cd frontend
-          npm ci
+          npm install # 👈 MUDADO DE 'npm ci' PARA 'npm install'
 
       - name: Rodar os Testes Automatizados do Vitest
         run: |

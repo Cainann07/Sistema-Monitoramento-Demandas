@@ -22,6 +22,11 @@ public class Demanda {
         this.status = status;
     }
 
+    public Demanda( String nome, StatusDemanda status) {
+        this.nome = nome;
+        this.status = status;
+    }
+
     public Demanda(DemandaDTORequest demandaDTORequest) {
         this.nome = demandaDTORequest.getNome();
         this.status = demandaDTORequest.getStatus();

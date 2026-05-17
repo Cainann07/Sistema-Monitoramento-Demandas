@@ -1,6 +1,7 @@
 package com.grupo2.sistemamonitoramento;
 
 import com.grupo2.sistemamonitoramento.model.Demanda;
+import com.grupo2.sistemamonitoramento.model.StatusDemanda;
 import com.grupo2.sistemamonitoramento.repository.DemandaRepository;
 import com.grupo2.sistemamonitoramento.service.DemandaService;
 import org.junit.jupiter.api.DisplayName;
@@ -30,8 +31,8 @@ public class DemandaServiceTest {
     void buscarPorIdComSucesso() {
         // Cenário
         Long id = 1L;
-//        Demanda demanda = new Demanda("Estudar JUnit", "Em andamento");
-//        when(demandaRepository.findById(id)).thenReturn(Optional.of(demanda));
+        Demanda demanda = new Demanda("Estudar JUnit", StatusDemanda.EM_ANDAMENTO);
+        when(demandaRepository.findById(id)).thenReturn(Optional.of(demanda));
 
         // Ação
         Optional<Demanda> resultado = demandaService.lerDemanda(id);
